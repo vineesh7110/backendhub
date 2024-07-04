@@ -18,7 +18,8 @@ const cors = require('cors')
 
 require('dotenv').config()
 app.use(cors({
-  origin:["http://localhost:5173"],
+ // origin:["http://localhost:5173"],
+ origin: "*",
   methods:["GET","POST","PATCH","DELETE"],
   credentials:true
 }))
@@ -29,9 +30,9 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
-app.use('/products',productRoutes)
-app.use('/contact',contactRoutes)
-app.use('/products/:productsId',productRoutes)
+app.use('/api/products',productRoutes)
+app.use('/api/contact',contactRoutes)
+app.use('/api/products/:productsId',productRoutes)
 
 app.post('/users/signup', async (req, res) => {
   try {
